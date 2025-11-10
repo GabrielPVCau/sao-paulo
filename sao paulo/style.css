@@ -1,0 +1,179 @@
+/* ================================================== */
+/* Configurações Globais e Variáveis de Cor           */
+/* ================================================== */
+:root {
+    --primary-blue: #0A2540;
+    --action-green: #00D09C;
+    --light-gray: #F6F9FC;
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-dark);
+    line-height: 1.7;
+    background-color: var(--text-light);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    line-height: 1.3;
+    font-weight: 700;
+}
+h1 { font-size: 3rem; color: var(--text-light); margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; color: var(--primary-blue); }
+
+.section-subtitle { max-width: 700px; margin: 0 auto 3rem auto; text-align: center; font-size: 1.1rem; }
+section { padding: 80px 0; }
+
+/* ================================================== */
+/* Estilos do Botão de CTA (Chamada para Ação)        */
+/* ================================================== */
+.cta-button {
+    display: inline-block;
+    background-color: var(--action-green);
+    color: var(--text-light);
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 208, 156, 0.2);
+    border: none;
+    cursor: pointer;
+    width: 100%; /* Faz o botão do form ocupar o espaço todo */
+}
+.cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 208, 156, 0.4); }
+.hero-ctas .cta-button { width: auto; } /* Restaura o tamanho do botão no hero */
+
+/* ================================================== */
+/* Seção 1: Hero                                      */
+/* ================================================== */
+.hero-section { background-color: var(--primary-blue); color: var(--text-light); padding: 80px 0; }
+.hero-content { display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: start; }
+.hero-section .text-content { text-align: left; }
+.hero-section .lead { font-size: 1.15rem; margin-bottom: 1.5rem; opacity: 0.95; max-width: 500px; }
+.hero-benefits { list-style: none; margin: 0 0 2rem 0; padding: 0; color: rgba(255,255,255,0.95); max-width: 500px; }
+.hero-benefits li { margin-bottom: 0.75rem; padding-left: 10px; }
+.hero-ctas { display:flex; align-items:center; margin-bottom: 2rem; }
+.trust-row { display:flex; gap:12px; align-items:center; margin-top: 1.5rem; color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+.logo-trust { display: flex; gap: 20px; }
+.logo-trust img { height:25px; filter:grayscale(100%) brightness(1.5); opacity:0.8 }
+
+/* Formulário do Hero */
+.lead-form { background: var(--text-light); color: var(--text-dark); padding: 25px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+.consultant-intro { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.consultant-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--action-green); }
+.lead-form h4 { color: var(--primary-blue); margin: 0; font-size: 1.25rem; }
+.lead-form .small { font-size: 0.9rem; margin: 0; color:#555; }
+.lead-form label { display:block; font-size:0.9rem; font-weight: 600; margin-top:12px; margin-bottom:6px; }
+.lead-form input { width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; font-size:1rem; font-family: var(--font-family); }
+.lead-form input:focus { border-color: var(--primary-blue); outline: 2px solid var(--action-green); }
+.lead-form .cta-button { margin-top: 20px; }
+
+/* Próximos Passos (Abaixo do formulário) */
+.next-steps {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+    color: #555;
+}
+.next-steps strong { color: var(--primary-blue); }
+.next-steps ol { padding-left: 20px; margin-top: 5px; }
+.next-steps li { margin-bottom: 3px; }
+
+/* Modal de Confirmação */
+.modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(10,37,64,0.7); z-index:9999; opacity:0; pointer-events:none; transition:opacity 0.3s ease; }
+.modal[aria-hidden="false"] { opacity:1; pointer-events:auto; }
+.modal-content { background:var(--text-light); border-radius:12px; padding:30px; max-width:450px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.3); text-align: center; }
+.modal-close { background:transparent; border:0; font-size:2rem; position:absolute; right:15px; top:10px; cursor:pointer; color: #aaa; }
+.modal-body h3 { color:var(--primary-blue); font-size: 1.8rem; }
+.modal-ok { margin-top:15px; width: auto; }
+
+/* ================================================== */
+/* Seção 2: Problema                                  */
+/* ================================================== */
+.problem-section { background-color: var(--light-gray); }
+.problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; text-align: center; }
+.problem-card i { font-size: 2.5rem; color: var(--action-green); margin-bottom: 1rem; }
+.problem-card h3 { font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 0.5rem; }
+
+/* ================================================== */
+/* Seção 3: Implicação                                */
+/* ================================================== */
+.two-columns { display: flex; align-items: center; gap: 50px; }
+.two-columns .text-content { flex: 1; }
+.two-columns .visual-content { flex: 1; text-align: center; }
+.two-columns .visual-content img { max-width: 100%; height: auto; border-radius: 8px; }
+.implication-section h2, .implication-section .section-subtitle { text-align: left; margin-left: 0; }
+.implication-section p { margin-bottom: 1rem; }
+
+/* ================================================== */
+/* Seção 4: Para Quem É                               */
+/* ================================================== */
+.ideal-for-section { text-align: center; }
+.ideal-for-list { list-style: none; text-align: left; max-width: 800px; margin: 2rem auto 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+.ideal-for-list li { font-size: 1.1rem; display: flex; align-items: center; background-color: var(--light-gray); padding: 15px; border-radius: 8px; }
+.ideal-for-list i { color: var(--action-green); font-size: 1.5rem; margin-right: 15px; }
+
+/* ================================================== */
+/* Seção 5: Prova Social                              */
+/* ================================================== */
+.social-proof-section { background-color: var(--light-gray); }
+.testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 3rem; }
+.testimonial-card { background-color: #fff; padding: 30px; border-radius: 10px; display: flex; flex-direction: column; align-items: center; text-align: center; border: 1px solid #e6eef6; }
+.testimonial-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid var(--action-green); }
+.testimonial-card blockquote { font-size: 1.05rem; font-style: italic; margin-bottom: 1rem; flex-grow: 1; color: #444; }
+.testimonial-card cite { font-weight: 600; color: var(--primary-blue); }
+
+/* ================================================== */
+/* Seção 6: CTA Final                                 */
+/* ================================================== */
+.final-cta-section { background-color: var(--primary-blue); color: var(--text-light); text-align: center; padding: 80px 0; }
+.final-cta-section h2 { color: var(--text-light); }
+.final-cta-section p { max-width: 600px; margin: 1rem auto 2.5rem auto; opacity: 0.9; }
+.cta-button-final { color: var(--primary-blue); transform: scale(1.05); }
+.cta-button-final:hover { transform: scale(1.1) translateY(-3px); }
+.scarcity-text { font-size: 0.9rem; opacity: 0.8; margin-top: 1rem !important; }
+
+/* ================================================== */
+/* Responsividade (para dispositivos móveis)          */
+/* ================================================== */
+@media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-section .text-content { text-align: center; }
+    .lead-form { margin-top: 40px; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2.2rem; }
+    .hero-benefits { margin-left: auto; margin-right: auto; }
+    .hero-ctas { justify-content: center; }
+    .trust-row { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+    section { padding: 60px 0; }
+    .two-columns { flex-direction: column; text-align: center; }
+    .implication-section h2, .implication-section .section-subtitle { text-align: center; }
+    .implication-section .visual-content { margin-top: 2rem; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+}
