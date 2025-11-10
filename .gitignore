@@ -22,7 +22,3 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Midia local não necessária no repositório
-image/
-docs/image/
