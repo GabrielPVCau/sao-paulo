@@ -109,7 +109,32 @@
                     <p><strong>Dinheiro jogado fora:</strong> Investir em marketing sem saber o que funciona é desperdiçar recursos. Nós mostramos onde focar para ter o máximo retorno.</p>
                 </div>
                 <div class="visual-content">
-                    <img src="image/grafico.png" alt="Gráfico mostrando a perda de oportunidade de crescimento ao longo do tempo">
+                    <figure class="chart-figure" aria-labelledby="chartTitle">
+                        <svg class="inline-chart" viewBox="0 0 200 120" role="img" aria-labelledby="chartTitle chartDesc" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                            <title id="chartTitle">Tendência de perda de oportunidade ao longo do tempo</title>
+                            <desc id="chartDesc">Linha ilustrativa mostrando como oportunidades caem quando não há ação: a curva desce da esquerda para a direita.</desc>
+                            <defs>
+                                <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#00D09C" stop-opacity="0.35" />
+                                    <stop offset="100%" stop-color="#00D09C" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Eixo horizontal leve -->
+                            <line x1="10" y1="10" x2="190" y2="10" stroke="rgba(10,37,64,0.06)" stroke-width="2" />
+                            <!-- Área preenchida (área abaixo da curva) -->
+                            <path d="M10,20 L50,35 L90,55 L130,75 L170,95 L190,105 L190,120 L10,120 Z" fill="url(#g)" />
+                            <!-- Linha da tendência -->
+                            <path d="M10,20 L50,35 L90,55 L130,75 L170,95 L190,105" fill="none" stroke="#0A2540" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            <!-- Pontos para dar ênfase -->
+                            <circle cx="10" cy="20" r="3.5" fill="#00D09C" />
+                            <circle cx="50" cy="35" r="3.5" fill="#00D09C" />
+                            <circle cx="90" cy="55" r="3.5" fill="#00D09C" />
+                            <circle cx="130" cy="75" r="3.5" fill="#00D09C" />
+                            <circle cx="170" cy="95" r="3.5" fill="#00D09C" />
+                            <circle cx="190" cy="105" r="3.5" fill="#00D09C" />
+                        </svg>
+                        <figcaption class="chart-caption">Sem ação, oportunidades se perdem ao longo do tempo — nós recuperamos o crescimento com estratégias focadas.</figcaption>
+                    </figure>
                 </div>
             </div>
         </section>
