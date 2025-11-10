@@ -1,0 +1,28 @@
+# Pastas e arquivos locais
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+
+# Pastas de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Midia local não necessária no repositório
+image/
+docs/image/

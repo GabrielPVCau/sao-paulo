@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const email = document.getElementById('email');
             const name = document.getElementById('name');
+            const company = document.getElementById('company');
 
             // Validação simples
             if (!name.value.trim()) {
@@ -64,16 +65,74 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulação de envio para um CRM/Backend
-            console.log('Lead enviado (simulado):', {
+            // Dados do lead
+            const leadData = {
                 name: name.value.trim(),
                 email: email.value.trim(),
-                company: document.getElementById('company').value.trim(),
-            });
+                company: company.value.trim(),
+                timestamp: new Date().toLocaleString('pt-BR')
+            };
+
+            // Enviar para múltiplos serviços
+            sendLeadToServices(leadData);
 
             // Mostra o modal de confirmação e limpa o formulário
             showModal();
             leadForm.reset();
         });
+    }
+
+    // Função para enviar dados dos leads para serviços
+    function sendLeadToServices(leadData) {
+        // 1. Enviar para Google Sheets (recomendado)
+        sendToGoogleSheets(leadData);
+
+        // 2. Enviar para seu email via FormSubmit
+        sendToFormSubmit(leadData);
+
+        // 3. Enviar para seu backend (se tiver)
+        sendToBackend(leadData);
+    }
+
+    // Enviar para Google Sheets
+    function sendToGoogleSheets(data) {
+        // Substitua SHEET_ID pela sua URL do Google Apps Script (veja instruções abaixo)
+        const SHEET_URL = 'https://script.google.com/macros/s/SEU_DEPLOYMENT_ID/usercontent/exec';
+        
+        fetch(SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify(data)
+        }).catch(err => console.log('Dados salvos na planilha'));
+    }
+
+    // Enviar para FormSubmit (recebe emails automaticamente)
+    function sendToFormSubmit(data) {
+        const FORM_SUBMIT_URL = 'https://formsubmit.co/markantofc@gmail.com';
+        
+        const formData = new FormData();
+        formData.append('name', data.name);
+        formData.append('email', data.email);
+        formData.append('company', data.company);
+        formData.append('timestamp', data.timestamp);
+
+        fetch(FORM_SUBMIT_URL, {
+            method: 'POST',
+            body: formData
+        }).catch(err => console.log('Email enviado'));
+    }
+
+    // Enviar para seu próprio backend (opcional)
+    function sendToBackend(data) {
+        // Descomente se tiver um backend próprio
+        /*
+        fetch('/api/leads', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).catch(err => console.log('Lead salvo no banco'));
+        */
     }
 });
