@@ -199,6 +199,34 @@
             </div>
         </div>
     </div>
+
+    <!-- Botão Flutuante WhatsApp com Balão -->
+    <div class="whatsapp-container">
+        <div class="whatsapp-bubble" id="whatsappBubble">
+            <button class="whatsapp-bubble-close" aria-label="Fechar balão de chat" onclick="toggleWhatsAppBubble(false)">&times;</button>
+            <div class="whatsapp-bubble-header">
+                <div class="whatsapp-bubble-avatar">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div class="whatsapp-bubble-info">
+                    <h5>Markant Suporte</h5>
+                    <span>Online</span>
+                </div>
+            </div>
+            <div class="whatsapp-bubble-body">
+                <p id="whatsappMessage"></p>
+                <a href="https://wa.me/5543988418642/?text=Olá! Gostaria de saber mais sobre os serviços da Markant" target="_blank" class="btn-whatsapp-chat">
+                    <i class="fab fa-whatsapp mr-1"></i> Iniciar Conversa
+                </a>
+            </div>
+        </div>
+
+        <button class="whatsapp-float" id="whatsappBtn" aria-label="Abrir chat do WhatsApp" title="Fale Conosco!">
+            <i class="fab fa-whatsapp"></i>
+            <span class="whatsapp-notification"></span>
+        </button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
