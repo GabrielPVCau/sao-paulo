@@ -152,29 +152,12 @@ let hasTyped = false;
 // Detectar prefers-reduced-motion para respeitar preferências de acessibilidade
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Função para digitar a mensagem
+// Função para digitar a mensagem (simplificada para remover animação)
 function startTyping() {
-    if (!whatsappMessageEl || hasTyped || prefersReducedMotion) {
-        if (whatsappMessageEl) whatsappMessageEl.innerHTML = fullMessage;
-        return;
+    if (whatsappMessageEl) {
+        whatsappMessageEl.innerHTML = fullMessage;
     }
-    let i = 0;
-    whatsappMessageEl.innerHTML = '';
-    const cursorSpan = '<span class="typing-cursor"></span>';
-    whatsappMessageEl.innerHTML = cursorSpan;
-
-    function typeChar() {
-        if (i < fullMessage.length) {
-            whatsappMessageEl.innerHTML = fullMessage.substring(0, i + 1) + cursorSpan;
-            i++;
-            typingTimeout = setTimeout(typeChar, typingSpeed);
-        } else {
-            whatsappMessageEl.innerHTML = fullMessage;
-            hasTyped = true;
-        }
-    }
-    clearTimeout(typingTimeout);
-    typingTimeout = setTimeout(typeChar, 300);
+    hasTyped = true;
 }
 
 // Função para mostrar/esconder o balão
@@ -213,11 +196,4 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Auto-mostrar balão após 5 segundos
-if (!prefersReducedMotion) {
-    autoShowTimeout = setTimeout(() => {
-        if (whatsappBubble && !whatsappBubble.classList.contains('show')) {
-            toggleWhatsAppBubble(true);
-        }
-    }, 5000);
-}
+// Auto-mostrar balão foi removido para evitar distração e focar na conversão do formulário.
