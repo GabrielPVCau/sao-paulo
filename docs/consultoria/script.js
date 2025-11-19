@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const email = document.getElementById('email');
             const name = document.getElementById('name');
-            const company = document.getElementById('company');
+            const website = document.getElementById('website'); // Alterado de company para website
 
             // Validação simples
             if (!name.value.trim()) {
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const leadData = {
                 name: name.value.trim(),
                 email: email.value.trim(),
-                company: company.value.trim(),
+                website: website ? website.value.trim() : '', // Captura o site se existir
                 timestamp: new Date().toLocaleString('pt-BR')
             };
 
@@ -113,8 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('name', data.name);
         formData.append('email', data.email);
-        formData.append('company', data.company);
+        formData.append('website', data.website); // Alterado para website
         formData.append('timestamp', data.timestamp);
+        formData.append('_subject', 'Novo Lead de Consultoria: ' + data.name); // Assunto personalizado
 
         fetch(FORM_SUBMIT_URL, {
             method: 'POST',
@@ -136,64 +137,3 @@ document.addEventListener('DOMContentLoaded', () => {
         */
     }
 });
-
-/* ================================================== */
-/* Script Botão WhatsApp com Balão                   */
-/* ================================================== */
-const whatsappBtn = document.getElementById('whatsappBtn');
-const whatsappBubble = document.getElementById('whatsappBubble');
-const whatsappMessageEl = document.getElementById('whatsappMessage');
-const fullMessage = "Olá! 👋 Tem alguma dúvida? Fale conosco diretamente pelo WhatsApp!";
-const typingSpeed = 50;
-let typingTimeout;
-let autoShowTimeout;
-let hasTyped = false;
-
-// Detectar prefers-reduced-motion para respeitar preferências de acessibilidade
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-// Função para digitar a mensagem (simplificada para remover animação)
-function startTyping() {
-    if (whatsappMessageEl) {
-        whatsappMessageEl.innerHTML = fullMessage;
-    }
-    hasTyped = true;
-}
-
-// Função para mostrar/esconder o balão
-window.toggleWhatsAppBubble = function(show) {
-    clearTimeout(autoShowTimeout);
-    if (whatsappBubble) {
-        if (show) {
-            whatsappBubble.classList.add('show');
-            if (!hasTyped && !prefersReducedMotion) {
-                startTyping();
-            } else {
-                if (whatsappMessageEl) whatsappMessageEl.innerHTML = fullMessage;
-            }
-        } else {
-            whatsappBubble.classList.remove('show');
-            clearTimeout(typingTimeout);
-            if (whatsappMessageEl) whatsappMessageEl.innerHTML = fullMessage;
-        }
-    }
-}
-
-// Evento de clique no botão
-if (whatsappBtn) {
-    whatsappBtn.addEventListener('click', function(event) {
-        event.stopPropagation();
-        toggleWhatsAppBubble(!whatsappBubble.classList.contains('show'));
-    });
-}
-
-// Fechar balão ao clicar fora
-document.addEventListener('click', function(event) {
-    if (whatsappBubble && whatsappBubble.classList.contains('show')) {
-        if (!whatsappBubble.contains(event.target) && !whatsappBtn.contains(event.target)) {
-            toggleWhatsAppBubble(false);
-        }
-    }
-});
-
-// Auto-mostrar balão foi removido para evitar distração e focar na conversão do formulário.
