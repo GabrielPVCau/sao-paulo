@@ -1,87 +1,304 @@
-/* Reset & Base */
+/* =========================================
+   MARKANT DESIGN SYSTEM - HIGH END SAAS
+   ========================================= */
+
 :root {
-    --brand-primary: #3B82F6;
+    /* Palette - Deep Space & Electric Blue */
+    --bg-deep: #030610;
+    --bg-surface: #0F1623;
+    --bg-card: #161E2E;
+
+    --primary: #3B82F6;
+    --primary-glow: rgba(59, 130, 246, 0.5);
+    --accent: #8B5CF6;
+    --success: #10B981;
+
+    --text-main: #F8FAFC;
+    --text-muted: #94A3B8;
+
+    --border-light: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(59, 130, 246, 0.3);
+
+    /* Typography */
+    --font-sans: 'Inter', sans-serif;
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
 }
+
+/* =========================================
+   BASE & RESET OVERRIDES
+   ========================================= */
 
 html {
     scroll-behavior: smooth;
+    background-color: var(--bg-deep);
+}
+
+body {
+    background-color: var(--bg-deep) !important;
+    color: var(--text-main) !important;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Selection Color */
+::selection {
+    background: var(--primary);
+    color: white;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #020408;
+    background: var(--bg-deep);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #1e293b;
-    border-radius: 4px;
+    background: #334155;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
+    background: var(--primary);
 }
 
-/* Utilities */
-.glass {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+/* =========================================
+   COMPONENTS & UTILITIES
+   ========================================= */
+
+/* Glassmorphism Enhanced */
+.glass,
+#navbar {
+    background: rgba(3, 6, 16, 0.6) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Modal States */
-#lead-modal[aria-hidden="false"] {
-    opacity: 1;
-    pointer-events: auto;
+/* Gradient Text */
+.text-gradient {
+    background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-#lead-modal[aria-hidden="false"] #modal-content {
-    transform: scale(100%);
+/* Primary Button Upgrade */
+button.bg-brand-primary,
+a.bg-brand-primary,
+button[type="submit"] {
+    background: linear-gradient(135deg, var(--primary) 0%, #2563EB 100%) !important;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-/* FAQ Animation */
+button.bg-brand-primary:hover,
+button[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 35px rgba(59, 130, 246, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Shine Effect on Buttons */
+button.bg-brand-primary::after,
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: skewX(-20deg);
+    transition: 0.5s;
+}
+
+button.bg-brand-primary:hover::after,
+button[type="submit"]:hover::after {
+    left: 150%;
+    transition: 0.7s ease-in-out;
+}
+
+/* Secondary Button / Outline */
+a.border-brand-border {
+    border-color: var(--border-light) !important;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(5px);
+}
+
+a.border-brand-border:hover {
+    border-color: var(--primary) !important;
+    background: rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+}
+
+/* =========================================
+   SECTIONS SPECIFIC
+   ========================================= */
+
+/* Hero Section */
+#hero {
+    background: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-deep) 60%);
+}
+
+#hero h1 {
+    text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+    letter-spacing: -0.03em;
+}
+
+/* Cards (Pain Points & Testimonials) */
+.bg-brand-card,
+.bg-brand-surface {
+    background: linear-gradient(180deg, rgba(22, 30, 46, 0.7) 0%, rgba(15, 22, 35, 0.9) 100%) !important;
+    border: 1px solid var(--border-light) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s ease;
+}
+
+.bg-brand-card:hover {
+    border-color: var(--border-hover) !important;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3), 0 0 15px rgba(59, 130, 246, 0.1);
+}
+
+/* Icons in Cards */
+.bg-brand-card i {
+    filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* Form Inputs */
+input,
+select {
+    background-color: rgba(2, 4, 8, 0.6) !important;
+    border: 1px solid var(--border-light) !important;
+    color: white !important;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    background-color: rgba(2, 4, 8, 0.9) !important;
+}
+
+/* Labels */
+label {
+    letter-spacing: 0.05em;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+/* =========================================
+   ANIMATIONS & MICRO-INTERACTIONS
+   ========================================= */
+
+/* Floating Animation for Hero Elements */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+/* FAQ Accordion */
 .faq-content-visible {
     display: block !important;
-    animation: slideDown 0.3s ease-out forwards;
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideDown {
     from {
         opacity: 0;
         transform: translateY(-10px);
+        max-height: 0;
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+        max-height: 200px;
     }
 }
 
-/* Perspective for 3D effects */
-.perspective {
-    perspective: 1000px;
+/* Modal */
+#lead-modal[aria-hidden="false"] {
+    opacity: 1;
+    pointer-events: auto;
+    backdrop-filter: blur(8px);
 }
 
-/* Input Autofill Fix for Dark Mode */
+#lead-modal[aria-hidden="false"] #modal-content {
+    transform: scale(1);
+    animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPop {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================= */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+/* Input Autofill Fix */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #020408 inset !important;
+    -webkit-box-shadow: 0 0 0 30px #0B101B inset !important;
     -webkit-text-fill-color: white !important;
     transition: background-color 5000s ease-in-out 0s;
-}
-
-select {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.5rem center;
-    background-repeat: no-repeat;
-    background-size: 1.5em 1.5em;
-    padding-right: 2.5rem;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
 }
