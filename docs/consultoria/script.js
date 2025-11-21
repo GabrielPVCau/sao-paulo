@@ -1,139 +1,100 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Página da Markant otimizada carregada.");
+    console.log("Markant Growth Page Loaded - V2.0");
 
-    const focusFormBtn = document.getElementById('focus-form');
-    const nameInput = document.getElementById('name');
-    const modal = document.getElementById('lead-modal');
-    const modalClose = document.querySelector('.modal-close');
-    const modalOk = document.querySelector('.modal-ok');
     const leadForm = document.getElementById('leadForm');
+    const modal = document.getElementById('lead-modal');
+    const modalCloseBtn = document.querySelector('.modal-close');
+    const navbar = document.getElementById('navbar');
 
-    // Função para mostrar o modal de confirmação
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('shadow-lg');
+            navbar.querySelector('div.absolute').classList.add('opacity-100');
+        } else {
+            navbar.classList.remove('shadow-lg');
+            navbar.querySelector('div.absolute').classList.remove('opacity-100');
+        }
+    });
+
+    // Modal Functions
     function showModal() {
         if (!modal) return;
         modal.setAttribute('aria-hidden', 'false');
-        modalOk.focus(); // Foca no botão de fechar para acessibilidade
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 
-    // Função para esconder o modal
     function hideModal() {
         if (!modal) return;
         modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
     }
 
-    // Botão do Hero para focar no formulário
-    if (focusFormBtn && nameInput) {
-        focusFormBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            nameInput.focus({ preventScroll: true }); // Foca no campo nome
-            // Rola suavemente até o formulário
-            nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    }
+    // Close Modal Events
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', hideModal);
 
-    // Eventos para fechar o modal
-    if (modalClose) modalClose.addEventListener('click', hideModal);
-    if (modalOk) modalOk.addEventListener('click', hideModal);
     if (modal) {
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) hideModal(); // Fecha se clicar fora do conteúdo
+            if (e.target === modal || e.target.querySelector('.absolute')) hideModal();
         });
+
         document.addEventListener('keydown', (e) => {
             if (e.key === "Escape" && modal.getAttribute('aria-hidden') === 'false') {
-                hideModal(); // Fecha com a tecla ESC
+                hideModal();
             }
         });
     }
 
-    // Validação e "envio" do formulário
+    // Form Submission
     if (leadForm) {
         leadForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = document.getElementById('email');
-            const name = document.getElementById('name');
-            const website = document.getElementById('website'); // Alterado de company para website
 
-            // Validação simples
-            if (!name.value.trim()) {
-                name.focus();
-                alert('Por favor, informe seu nome.');
-                return;
-            }
-            if (!email.value || !/^\S+@\S+\.\S+$/.test(email.value)) {
-                email.focus();
-                alert('Por favor, informe um e-mail válido.');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const websiteInput = document.getElementById('website');
+
+            // Basic Validation
+            if (!nameInput.value.trim() || !emailInput.value.trim()) {
+                alert('Por favor, preencha os campos obrigatórios.');
                 return;
             }
 
-            // Dados do lead
             const leadData = {
-                name: name.value.trim(),
-                email: email.value.trim(),
-                website: website ? website.value.trim() : '', // Captura o site se existir
+                name: nameInput.value.trim(),
+                email: emailInput.value.trim(),
+                website: websiteInput ? websiteInput.value.trim() : '',
                 timestamp: new Date().toLocaleString('pt-BR')
             };
 
-            // Enviar para múltiplos serviços
+            // Simulate API Call / Send Data
             sendLeadToServices(leadData);
 
-            // Mostra o modal de confirmação e limpa o formulário
+            // Show Success
             showModal();
             leadForm.reset();
         });
     }
 
-    // Função para enviar dados dos leads para serviços
     function sendLeadToServices(leadData) {
-        // 1. Enviar para Google Sheets (recomendado)
-        sendToGoogleSheets(leadData);
+        console.log("Processing Lead:", leadData);
 
-        // 2. Enviar para seu email via FormSubmit
-        sendToFormSubmit(leadData);
-
-        // 3. Enviar para seu backend (se tiver)
-        sendToBackend(leadData);
-    }
-
-    // Enviar para Google Sheets
-    function sendToGoogleSheets(data) {
-        // Substitua SHEET_ID pela sua URL do Google Apps Script (veja instruções abaixo)
-        const SHEET_URL = 'https://script.google.com/macros/s/SEU_DEPLOYMENT_ID/usercontent/exec';
-        
-        fetch(SHEET_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            body: JSON.stringify(data)
-        }).catch(err => console.log('Dados salvos na planilha'));
-    }
-
-    // Enviar para FormSubmit (recebe emails automaticamente)
-    function sendToFormSubmit(data) {
+        // 1. FormSubmit (Email)
         const FORM_SUBMIT_URL = 'https://formsubmit.co/markantofc@gmail.com';
-        
         const formData = new FormData();
-        formData.append('name', data.name);
-        formData.append('email', data.email);
-        formData.append('website', data.website); // Alterado para website
-        formData.append('timestamp', data.timestamp);
-        formData.append('_subject', 'Novo Lead de Consultoria: ' + data.name); // Assunto personalizado
+        for (const key in leadData) {
+            formData.append(key, leadData[key]);
+        }
+        formData.append('_subject', `🔥 Novo Lead Growth: ${leadData.name}`);
+        formData.append('_captcha', 'false');
 
         fetch(FORM_SUBMIT_URL, {
             method: 'POST',
             body: formData
-        }).catch(err => console.log('Email enviado'));
-    }
+        }).catch(err => console.error('Erro ao enviar email', err));
 
-    // Enviar para seu próprio backend (opcional)
-    function sendToBackend(data) {
-        // Descomente se tiver um backend próprio
-        /*
-        fetch('/api/leads', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        }).catch(err => console.log('Lead salvo no banco'));
-        */
+        // 2. Google Sheets (Optional - Add your URL if needed)
+        // const SHEET_URL = 'YOUR_GOOGLE_SCRIPT_URL';
+        // fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(leadData) });
     }
 });
