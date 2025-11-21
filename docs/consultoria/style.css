@@ -1,10 +1,19 @@
+/* Reset & Base */
+:root {
+    --brand-primary: #3B82F6;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #050A14;
+    background: #020408;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -16,12 +25,7 @@
     background: #334155;
 }
 
-/* Smooth Scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Glassmorphism Utilities */
+/* Utilities */
 .glass {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -39,7 +43,7 @@ html {
     transform: scale(100%);
 }
 
-/* FAQ Accordion Animation */
+/* FAQ Animation */
 .faq-content-visible {
     display: block !important;
     animation: slideDown 0.3s ease-out forwards;
@@ -67,7 +71,17 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #050A14 inset !important;
+    -webkit-box-shadow: 0 0 0 30px #020408 inset !important;
     -webkit-text-fill-color: white !important;
     transition: background-color 5000s ease-in-out 0s;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
 }

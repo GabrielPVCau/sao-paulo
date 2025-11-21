@@ -1,23 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Markant Growth Page - Optimized V3.0");
+    console.log("Markant Growth - System Initialized");
 
     const leadForm = document.getElementById('leadForm');
     const modal = document.getElementById('lead-modal');
     const modalCloseBtn = document.querySelector('.modal-close');
     const navbar = document.getElementById('navbar');
 
-    // Navbar Scroll Effect (Glassmorphism on scroll)
+    // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
-            navbar.classList.add('shadow-lg');
-            navbar.querySelector('div.absolute').classList.add('opacity-100');
+            navbar.classList.add('border-brand-border', 'shadow-lg');
+            navbar.querySelector('.absolute').classList.add('opacity-100');
+            navbar.classList.remove('border-transparent');
         } else {
-            navbar.classList.remove('shadow-lg');
-            navbar.querySelector('div.absolute').classList.remove('opacity-100');
+            navbar.classList.remove('border-brand-border', 'shadow-lg');
+            navbar.querySelector('.absolute').classList.remove('opacity-100');
+            navbar.classList.add('border-transparent');
         }
     });
 
-    // Focus Form Function (Global)
+    // Global Focus Form
     window.focusForm = function () {
         const nameInput = document.getElementById('name');
         const heroSection = document.getElementById('hero');
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800);
     };
 
-    // Modal Functions
+    // Modal Logic
     function showModal() {
         if (!modal) return;
         modal.setAttribute('aria-hidden', 'false');
@@ -61,14 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
             content.classList.remove('hidden');
             content.classList.add('faq-content-visible');
             icon.classList.add('rotate-180');
+            button.classList.add('bg-white/5');
         } else {
             content.classList.add('hidden');
             content.classList.remove('faq-content-visible');
             icon.classList.remove('rotate-180');
+            button.classList.remove('bg-white/5');
         }
     };
 
-    // Form Submission Logic
+    // Form Submission
     if (leadForm) {
         leadForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -78,19 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Loading State
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando...';
+            submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Analisando...';
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
             const formData = new FormData(leadForm);
             const leadData = Object.fromEntries(formData.entries());
             leadData.timestamp = new Date().toLocaleString('pt-BR');
 
-            // Simulate API Delay
+            // Simulate API Call
             setTimeout(() => {
                 sendLeadToServices(leadData);
 
-                // Reset State
+                // Reset
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
 
                 showModal();
                 leadForm.reset();
@@ -101,13 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function sendLeadToServices(leadData) {
         console.log("Lead Captured:", leadData);
 
-        // 1. FormSubmit (Email)
+        // FormSubmit Integration
         const FORM_SUBMIT_URL = 'https://formsubmit.co/markantofc@gmail.com';
         const formData = new FormData();
         for (const key in leadData) {
             formData.append(key, leadData[key]);
         }
-        formData.append('_subject', `� Novo Lead Growth: ${leadData.name}`);
+        formData.append('_subject', `🚀 Novo Lead Consultoria: ${leadData.name}`);
         formData.append('_captcha', 'false');
         formData.append('_template', 'table');
 
