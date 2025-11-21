@@ -12,14 +12,15 @@
     </script>
     <meta charset="UTF-8">
     <meta name="description"
-        content="Markant: Consultoria de Growth Marketing especializada em ROI e Escala. Transforme tráfego em lucro líquido com nossa metodologia validada." />
+        content="Consultoria de Growth Marketing especializada em ROI. Aumente seu lucro líquido com estratégias validadas de otimização de conversão e tráfego pago." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markant | Escala Previsível & ROI</title>
+    <title>Markant | Aceleradora de Lucro & Growth</title>
 
-    <!-- Fonts -->
+    <!-- Fonts: Outfit (Headings) + Inter (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
@@ -33,25 +34,35 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            dark: '#0B1120',    /* Deepest Navy */
-                            surface: '#151F32', /* Card BG */
-                            accent: '#10B981',  /* Growth Green */
-                            blue: '#3B82F6',    /* Trust Blue */
-                            light: '#F3F4F6',   /* Text Light */
-                            gray: '#9CA3AF'     /* Text Muted */
+                            dark: '#050A14',    /* Almost Black */
+                            surface: '#0F172A', /* Slate 900 */
+                            accent: '#00E599',  /* Neon Mint */
+                            blue: '#3B82F6',    /* Electric Blue */
+                            purple: '#8B5CF6',  /* Violet */
+                            light: '#F8FAFC',   /* Slate 50 */
+                            gray: '#94A3B8'     /* Slate 400 */
                         }
                     },
+                    boxShadow: {
+                        'neon': '0 0 20px rgba(0, 229, 153, 0.2)',
+                        'glow': '0 0 40px rgba(59, 130, 246, 0.15)'
+                    },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite',
                     },
                     keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(0, 229, 153, 0.2)' },
+                            '50%': { opacity: '0.8', boxShadow: '0 0 30px rgba(0, 229, 153, 0.4)' },
                         }
                     }
                 }
@@ -63,114 +74,140 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-brand-dark text-brand-light font-sans antialiased selection:bg-brand-accent selection:text-brand-dark">
+<body
+    class="bg-brand-dark text-brand-light font-sans antialiased selection:bg-brand-accent selection:text-brand-dark overflow-x-hidden">
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-        <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-md border-b border-white/5"></div>
+        <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-lg border-b border-white/5"></div>
         <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter text-white">
-                MARKANT<span class="text-brand-accent">.</span>
+            <a href="#" class="text-2xl font-heading font-bold tracking-tighter text-white group">
+                MARKANT<span class="text-brand-accent group-hover:text-brand-blue transition-colors">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#metodo" class="text-sm font-medium text-brand-gray hover:text-white transition-colors">O
+                    Método</a>
+                <a href="#resultados"
+                    class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Resultados</a>
+                <a href="#faq"
+                    class="text-sm font-medium text-brand-gray hover:text-white transition-colors">Dúvidas</a>
             </div>
-            <a href="#hero" onclick="document.getElementById('name').focus()"
-                class="hidden md:inline-block bg-white/5 hover:bg-white/10 text-white px-6 py-2 rounded-full text-sm font-medium transition-all border border-white/10">
-                Falar com Especialista
+            <a href="#hero" onclick="focusForm()"
+                class="hidden md:inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white px-5 py-2.5 rounded-full text-sm font-bold transition-all border border-white/10 hover:border-brand-accent/50 hover:shadow-neon">
+                <span>Diagnóstico Gratuito</span>
+                <i class="fas fa-arrow-right text-xs"></i>
             </a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (AIDA: Attention) -->
     <header id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Effects -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
-            <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-blue/20 rounded-full blur-[120px]">
+        <!-- Dynamic Background -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div
+                class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-brand-blue/10 rounded-full blur-[120px] animate-pulse">
             </div>
             <div
-                class="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-brand-accent/10 rounded-full blur-[100px]">
+                class="absolute bottom-[10%] right-[-10%] w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px]">
             </div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-                <!-- Copy -->
-                <div class="lg:w-1/2 text-center lg:text-left animate-fade-in-up">
+                <!-- Copy (Left) -->
+                <div class="lg:w-1/2 text-center lg:text-left">
                     <div
-                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-surface border border-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-wider mb-6">
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-accent/20 text-brand-accent text-[10px] md:text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in-up">
                         <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
-                        Vagas abertas para Fevereiro 2025
+                        Apenas 3 vagas para Consultoria em Fevereiro
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-white">
-                        Transforme Tráfego em <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-blue">Lucro
-                            Líquido</span>.
+
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-[1.1] mb-6 text-white tracking-tight">
+                        Pare de Queimar Dinheiro com <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-blue">Tráfego
+                            Ruim</span>.
                     </h1>
-                    <p class="text-lg md:text-xl text-brand-gray mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Pare de adivinhar. Nossa metodologia de Growth validada desbloqueia o ROI oculto do seu funil e
-                        cria uma máquina de vendas previsível.
+
+                    <p class="text-lg text-brand-gray mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Sua empresa tem um ótimo produto, mas o marketing não escala? Nossa metodologia de
+                        <strong>Engenharia de Growth</strong> desbloqueia o lucro líquido oculto no seu funil em 90
+                        dias.
                     </p>
 
-                    <div
-                        class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start text-sm font-medium text-brand-gray">
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-brand-accent"></i> Diagnóstico Gratuito
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-10">
+                        <div class="flex items-center gap-2 text-sm text-brand-light font-medium">
+                            <div class="w-5 h-5 rounded-full bg-brand-accent/20 flex items-center justify-center">
+                                <i class="fas fa-check text-xs text-brand-accent"></i>
+                            </div>
+                            ROI Verificado
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-brand-accent"></i> Plano Personalizado
+                        <div class="flex items-center gap-2 text-sm text-brand-light font-medium">
+                            <div class="w-5 h-5 rounded-full bg-brand-accent/20 flex items-center justify-center">
+                                <i class="fas fa-check text-xs text-brand-accent"></i>
+                            </div>
+                            Zero "Achismos"
                         </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-brand-accent"></i> Zero "Achismos"
+                        <div class="flex items-center gap-2 text-sm text-brand-light font-medium">
+                            <div class="w-5 h-5 rounded-full bg-brand-accent/20 flex items-center justify-center">
+                                <i class="fas fa-check text-xs text-brand-accent"></i>
+                            </div>
+                            Estratégia Full-Funnel
                         </div>
                     </div>
                 </div>
 
-                <!-- Lead Capture Card -->
-                <div class="lg:w-1/2 w-full max-w-md relative animate-fade-in-up" style="animation-delay: 0.2s;">
+                <!-- Application Card (Right) - High Contrast -->
+                <div class="lg:w-1/2 w-full max-w-md relative group perspective">
                     <div
-                        class="absolute -inset-1 bg-gradient-to-r from-brand-accent to-brand-blue rounded-2xl blur opacity-30">
+                        class="absolute -inset-0.5 bg-gradient-to-r from-brand-accent to-brand-blue rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000">
                     </div>
-                    <div class="relative bg-brand-surface border border-white/10 p-8 rounded-2xl shadow-2xl">
-                        <div class="flex items-center gap-4 mb-6 border-b border-white/5 pb-6">
-                            <img src="image/matheus.jpg" alt="Consultor Markant"
-                                class="w-14 h-14 rounded-full border-2 border-brand-accent object-cover">
-                            <div>
-                                <h4 class="font-bold text-white">Solicite seu Diagnóstico</h4>
-                                <p class="text-xs text-brand-accent font-medium">Vagas limitadas esta semana</p>
-                            </div>
+                    <div class="relative bg-brand-surface border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-heading font-bold text-white">Solicite sua Auditoria</h3>
+                            <p class="text-sm text-brand-gray mt-1">Descubra onde você está perdendo vendas.</p>
                         </div>
 
                         <form id="leadForm" class="space-y-4">
-                            <div>
-                                <label for="name"
-                                    class="block text-xs font-semibold text-brand-gray uppercase mb-1">Nome
-                                    Completo</label>
-                                <input id="name" name="name" type="text" required placeholder="Seu nome"
-                                    class="w-full bg-brand-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all placeholder-gray-600">
+                            <div class="space-y-1">
+                                <label for="name" class="text-xs font-bold text-brand-gray uppercase ml-1">Nome</label>
+                                <div class="relative">
+                                    <i class="fas fa-user absolute left-4 top-3.5 text-brand-gray/50 text-sm"></i>
+                                    <input id="name" name="name" type="text" required placeholder="Seu nome completo"
+                                        class="w-full bg-brand-dark border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all placeholder-gray-700 text-sm">
+                                </div>
                             </div>
 
-                            <div>
-                                <label for="email"
-                                    class="block text-xs font-semibold text-brand-gray uppercase mb-1">E-mail
+                            <div class="space-y-1">
+                                <label for="email" class="text-xs font-bold text-brand-gray uppercase ml-1">E-mail
                                     Corporativo</label>
-                                <input id="email" name="email" type="email" required placeholder="voce@empresa.com"
-                                    class="w-full bg-brand-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all placeholder-gray-600">
+                                <div class="relative">
+                                    <i class="fas fa-envelope absolute left-4 top-3.5 text-brand-gray/50 text-sm"></i>
+                                    <input id="email" name="email" type="email" required
+                                        placeholder="nome@empresa.com.br"
+                                        class="w-full bg-brand-dark border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all placeholder-gray-700 text-sm">
+                                </div>
                             </div>
 
-                            <div>
-                                <label for="website"
-                                    class="block text-xs font-semibold text-brand-gray uppercase mb-1">Site /
+                            <div class="space-y-1">
+                                <label for="website" class="text-xs font-bold text-brand-gray uppercase ml-1">Site /
                                     Instagram</label>
-                                <input id="website" name="website" type="text" placeholder="suaempresa.com.br"
-                                    class="w-full bg-brand-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all placeholder-gray-600">
+                                <div class="relative">
+                                    <i class="fas fa-globe absolute left-4 top-3.5 text-brand-gray/50 text-sm"></i>
+                                    <input id="website" name="website" type="text" placeholder="suaempresa.com.br"
+                                        class="w-full bg-brand-dark border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all placeholder-gray-700 text-sm">
+                                </div>
                             </div>
 
                             <button type="submit"
-                                class="w-full bg-brand-accent hover:bg-emerald-400 text-brand-dark font-bold py-4 rounded-lg shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all transform hover:-translate-y-1 text-lg uppercase tracking-wide">
-                                Quero Escalar Agora
+                                class="w-full bg-brand-accent hover:bg-emerald-400 text-brand-dark font-bold py-4 rounded-lg shadow-neon hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all transform hover:-translate-y-1 text-base uppercase tracking-wide mt-2 flex items-center justify-center gap-2 group-hover:scale-[1.02]">
+                                <span>Quero Escalar Agora</span>
+                                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                             </button>
 
-                            <p class="text-center text-[10px] text-brand-gray flex items-center justify-center gap-1">
-                                <i class="fas fa-lock"></i> Seus dados estão seguros.
+                            <p class="text-center text-[10px] text-brand-gray mt-4">
+                                <i class="fas fa-lock mr-1"></i> Seus dados estão 100% seguros.
                             </p>
                         </form>
                     </div>
@@ -179,144 +216,186 @@
         </div>
     </header>
 
-    <!-- Social Proof / Logos -->
-    <section class="py-10 border-y border-white/5 bg-brand-surface/50">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-sm text-brand-gray mb-6 font-medium">ESTRATÉGIAS APLICADAS EM DIVERSOS NICHOS</p>
+    <!-- Social Proof (Authority) -->
+    <section class="py-8 border-y border-white/5 bg-brand-surface/30">
+        <div class="container mx-auto px-6">
+            <p class="text-center text-xs font-bold text-brand-gray uppercase tracking-widest mb-6">Estratégias que
+                geraram +R$ 15 Milhões para:</p>
             <div
-                class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <!-- Placeholder Icons for Niches -->
-                <div class="flex items-center gap-2 text-xl font-bold text-white"><i class="fas fa-shopping-cart"></i>
-                    E-commerce</div>
-                <div class="flex items-center gap-2 text-xl font-bold text-white"><i class="fas fa-building"></i> B2B
-                </div>
-                <div class="flex items-center gap-2 text-xl font-bold text-white"><i class="fas fa-laptop-code"></i>
-                    SaaS</div>
-                <div class="flex items-center gap-2 text-xl font-bold text-white"><i class="fas fa-user-tie"></i>
-                    Serviços</div>
+                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Simulated Logos -->
+                <div class="flex items-center gap-2 text-lg font-bold text-white"><i
+                        class="fas fa-layer-group text-brand-blue"></i> TechSaaS</div>
+                <div class="flex items-center gap-2 text-lg font-bold text-white"><i
+                        class="fas fa-shopping-bag text-brand-accent"></i> E-com Elite</div>
+                <div class="flex items-center gap-2 text-lg font-bold text-white"><i
+                        class="fas fa-briefcase text-purple-500"></i> Consultoria Pro</div>
+                <div class="flex items-center gap-2 text-lg font-bold text-white"><i
+                        class="fas fa-truck text-orange-500"></i> Logística Express</div>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section (Agitation) -->
+    <!-- Problem Section (PAS: Agitation) -->
     <section class="py-24 bg-brand-dark relative">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">O "Ciclo da Morte" do Marketing Digital</h2>
-                <p class="text-brand-gray text-lg">Se você sente que está queimando dinheiro sem ver retorno,
-                    provavelmente está preso em um desses 3 cenários:</p>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">O "Ciclo da Morte" do Marketing
+                </h2>
+                <p class="text-brand-gray text-lg">Se você sente que sua empresa parou no tempo, provavelmente está
+                    sofrendo de um destes 3 sintomas fatais:</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
+                <!-- Pain 1 -->
                 <div
-                    class="group bg-brand-surface p-8 rounded-2xl border border-white/5 hover:border-brand-accent/30 transition-all duration-300 hover:-translate-y-2">
+                    class="group bg-brand-surface p-8 rounded-2xl border border-white/5 hover:border-red-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div
-                        class="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors">
-                        <i class="fas fa-fire-alt text-red-500 text-2xl"></i>
+                        class="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors">
+                        <i class="fas fa-chart-down text-red-500 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Tráfego "Burro"</h3>
-                    <p class="text-brand-gray leading-relaxed">Você atrai cliques, mas ninguém compra. O pixel está
-                        confuso e o custo por lead (CPL) só aumenta.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Custo por Lead (CPL) Explosivo</h3>
+                    <p class="text-brand-gray leading-relaxed text-sm">Você coloca mais dinheiro no Facebook/Google, mas
+                        o retorno não vem. O algoritmo parece estar "roubando" seu orçamento.</p>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Pain 2 -->
                 <div
-                    class="group bg-brand-surface p-8 rounded-2xl border border-white/5 hover:border-brand-accent/30 transition-all duration-300 hover:-translate-y-2">
+                    class="group bg-brand-surface p-8 rounded-2xl border border-white/5 hover:border-orange-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div
-                        class="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
-                        <i class="fas fa-chart-line text-orange-500 text-2xl"></i>
+                        class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-500/20 transition-colors">
+                        <i class="fas fa-users-slash text-orange-500 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Platô de Vendas</h3>
-                    <p class="text-brand-gray leading-relaxed">Sua empresa parou de crescer. O que funcionava ano
-                        passado não funciona mais. Você bateu no teto.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Leads "Curiosos"</h3>
+                    <p class="text-brand-gray leading-relaxed text-sm">Seu time comercial reclama que os leads não têm
+                        dinheiro ou não sabem o que querem. Muita conversa, pouco fechamento.</p>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Pain 3 -->
                 <div
-                    class="group bg-brand-surface p-8 rounded-2xl border border-white/5 hover:border-brand-accent/30 transition-all duration-300 hover:-translate-y-2">
+                    class="group bg-brand-surface p-8 rounded-2xl border border-white/5 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2">
                     <div
-                        class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
+                        class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
                         <i class="fas fa-ghost text-purple-500 text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Leads Fantasmas</h3>
-                    <p class="text-brand-gray leading-relaxed">O comercial reclama que os leads são ruins. O marketing
-                        diz que entregou. Ninguém fecha negócio.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">Dependência de Indicação</h3>
+                    <p class="text-brand-gray leading-relaxed text-sm">Seus clientes vêm apenas do "boca a boca". Você
+                        não tem controle sobre seu crescimento e vive na incerteza do próximo mês.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Solution Section (The Method) -->
-    <section class="py-24 bg-brand-surface relative overflow-hidden">
+    <section id="metodo" class="py-24 bg-brand-surface relative overflow-hidden">
+        <!-- Decor -->
         <div
-            class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-dark/50 to-transparent pointer-events-none">
+            class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-blue/5 to-transparent pointer-events-none">
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">A Metodologia Markant</h2>
-                    <p class="text-brand-gray text-lg mb-8">Não acreditamos em "hacks" mágicos. Acreditamos em
-                        engenharia de dados aplicada ao marketing.</p>
+                    <div class="text-brand-accent font-bold uppercase tracking-widest text-xs mb-2">A Solução</div>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">O Método Markant de
+                        <br>Engenharia de Growth</h2>
+                    <p class="text-brand-gray text-lg mb-8">Não usamos "hacks" temporários. Implementamos uma
+                        infraestrutura de dados e processos que torna o crescimento inevitável.</p>
 
                     <div class="space-y-8">
-                        <div class="flex gap-4">
+                        <!-- Step 1 -->
+                        <div class="flex gap-5 group">
                             <div
-                                class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-blue/20 text-brand-blue flex items-center justify-center font-bold border border-brand-blue/30">
+                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center font-bold text-xl border border-brand-blue/20 group-hover:bg-brand-blue group-hover:text-white transition-all">
                                 1</div>
                             <div>
-                                <h4 class="text-white font-bold text-lg">Auditoria de Funil Profunda</h4>
-                                <p class="text-brand-gray text-sm mt-1">Rastreamos onde cada centavo é perdido.
-                                    Encontramos os gargalos invisíveis.</p>
+                                <h4 class="text-white font-bold text-lg group-hover:text-brand-blue transition-colors">
+                                    Diagnóstico & Rastreamento</h4>
+                                <p class="text-brand-gray text-sm mt-2 leading-relaxed">Instalamos "sondas" em todo seu
+                                    funil. Descobrimos exatamente onde o dinheiro está vazando e corrigimos os erros
+                                    técnicos.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
+                        <!-- Step 2 -->
+                        <div class="flex gap-5 group">
                             <div
-                                class="flex-shrink-0 w-10 h-10 rounded-full bg-brand-accent/20 text-brand-accent flex items-center justify-center font-bold border border-brand-accent/30">
+                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center font-bold text-xl border border-brand-accent/20 group-hover:bg-brand-accent group-hover:text-brand-dark transition-all">
                                 2</div>
                             <div>
-                                <h4 class="text-white font-bold text-lg">Otimização de Conversão (CRO)</h4>
-                                <p class="text-brand-gray text-sm mt-1">Ajustamos sua oferta, copy e design para
-                                    converter visitantes em compradores.</p>
+                                <h4
+                                    class="text-white font-bold text-lg group-hover:text-brand-accent transition-colors">
+                                    Otimização de Conversão (CRO)</h4>
+                                <p class="text-brand-gray text-sm mt-2 leading-relaxed">Reescrevemos suas ofertas e
+                                    redesenhamos suas páginas. Transformamos visitantes em compradores compulsivos
+                                    usando psicologia de consumo.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
+                        <!-- Step 3 -->
+                        <div class="flex gap-5 group">
                             <div
-                                class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center font-bold border border-purple-500/30">
+                                class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center font-bold text-xl border border-purple-500/20 group-hover:bg-purple-500 group-hover:text-white transition-all">
                                 3</div>
                             <div>
-                                <h4 class="text-white font-bold text-lg">Escala Horizontal & Vertical</h4>
-                                <p class="text-brand-gray text-sm mt-1">Aumentamos o investimento mantendo o ROI
-                                    saudável. O céu é o limite.</p>
+                                <h4 class="text-white font-bold text-lg group-hover:text-purple-500 transition-colors">
+                                    Escala de Tráfego</h4>
+                                <p class="text-brand-gray text-sm mt-2 leading-relaxed">Só agora aceleramos. Com o funil
+                                    validado, injetamos tráfego qualificado para escalar o faturamento mantendo o ROI
+                                    saudável.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:w-1/2">
-                    <!-- Abstract Chart Visualization -->
-                    <div class="relative bg-brand-dark border border-white/5 rounded-2xl p-8 shadow-2xl">
-                        <div class="flex justify-between items-end h-64 gap-4">
-                            <div class="w-full bg-brand-surface rounded-t-lg h-[30%] relative group">
-                                <div
-                                    class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs text-brand-gray opacity-0 group-hover:opacity-100 transition-opacity">
-                                    Antes</div>
+                    <!-- Visual Representation of Growth -->
+                    <div
+                        class="relative bg-brand-dark border border-white/10 rounded-2xl p-8 shadow-2xl hover:shadow-glow transition-all duration-500">
+                        <div
+                            class="absolute -top-4 -right-4 bg-brand-accent text-brand-dark font-bold px-4 py-2 rounded-lg shadow-lg text-sm transform rotate-3">
+                            Resultado Típico
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Metric 1 -->
+                            <div>
+                                <div class="flex justify-between text-sm text-brand-gray mb-2">
+                                    <span>Taxa de Conversão</span>
+                                    <span class="text-brand-accent font-bold">+145%</span>
+                                </div>
+                                <div class="w-full bg-brand-surface rounded-full h-2">
+                                    <div class="bg-brand-accent h-2 rounded-full" style="width: 85%"></div>
+                                </div>
                             </div>
-                            <div class="w-full bg-brand-surface rounded-t-lg h-[45%] relative group"></div>
-                            <div class="w-full bg-brand-blue/50 rounded-t-lg h-[60%] relative group"></div>
-                            <div
-                                class="w-full bg-brand-accent rounded-t-lg h-[85%] relative group shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                                <div
-                                    class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-brand-dark text-xs font-bold px-2 py-1 rounded shadow">
-                                    ROI 5x</div>
+                            <!-- Metric 2 -->
+                            <div>
+                                <div class="flex justify-between text-sm text-brand-gray mb-2">
+                                    <span>Custo por Lead (CPL)</span>
+                                    <span class="text-brand-blue font-bold">-40%</span>
+                                </div>
+                                <div class="w-full bg-brand-surface rounded-full h-2">
+                                    <div class="bg-brand-blue h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <!-- Metric 3 -->
+                            <div>
+                                <div class="flex justify-between text-sm text-brand-gray mb-2">
+                                    <span>Faturamento Recorrente</span>
+                                    <span class="text-purple-500 font-bold">3.5x</span>
+                                </div>
+                                <div class="w-full bg-brand-surface rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full" style="width: 92%"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="mt-4 flex justify-between text-xs text-brand-gray font-mono uppercase">
-                            <span>Mês 1</span>
-                            <span>Mês 2</span>
-                            <span>Mês 3</span>
-                            <span>Mês 4</span>
+
+                        <div class="mt-8 pt-6 border-t border-white/5 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+                                <i class="fas fa-user-tie text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-bold">"A Markant salvou nosso ano."</p>
+                                <p class="text-xs text-brand-gray">CEO, Empresa de Logística</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -324,39 +403,46 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 bg-brand-dark">
+    <!-- Testimonials (Social Proof) -->
+    <section id="resultados" class="py-24 bg-brand-dark">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-white mb-16">Resultados que Falam por Si</h2>
+            <h2 class="text-3xl font-heading font-bold text-center text-white mb-16">Quem aplicou, escalou.</h2>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Testimonial 1 -->
-                <div class="bg-brand-surface p-8 rounded-2xl border border-white/5 relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-blue/20 absolute top-6 left-6"></i>
-                    <p class="text-brand-light relative z-10 italic mb-6">"A Markant foi fundamental para estabelecer a
-                        presença digital da minha empresa. Eles desenvolveram uma estratégia que realmente conectou com
-                        nosso público."</p>
-                    <div class="flex items-center gap-4">
+                <div
+                    class="bg-brand-surface p-8 rounded-2xl border border-white/5 relative hover:border-brand-blue/30 transition-colors">
+                    <i class="fas fa-quote-left text-4xl text-brand-blue/10 absolute top-6 left-6"></i>
+                    <p class="text-brand-light relative z-10 italic mb-6 text-sm leading-relaxed">
+                        "Estávamos estagnados no faturamento há 6 meses. A equipe da Markant identificou um erro na
+                        nossa oferta que ninguém tinha visto. Em 30 dias, <strong>dobramos o ROI</strong> das
+                        campanhas."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-white/5 pt-4">
                         <img src="image/Vando.png" alt="Vando Cau"
-                            class="w-12 h-12 rounded-full object-cover border border-brand-blue">
+                            class="w-12 h-12 rounded-full object-cover border-2 border-brand-blue">
                         <div>
                             <h5 class="font-bold text-white text-sm">Vando Cau</h5>
-                            <p class="text-xs text-brand-gray">Empresário, Setor de Transportes</p>
+                            <p class="text-xs text-brand-gray">Diretor, Setor de Transportes</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="bg-brand-surface p-8 rounded-2xl border border-white/5 relative">
-                    <i class="fas fa-quote-left text-4xl text-brand-blue/20 absolute top-6 left-6"></i>
-                    <p class="text-brand-light relative z-10 italic mb-6">"Conseguimos um alcance significativo e uma
-                        conexão real com nosso público através de uma comunicação eficiente e direcionada."</p>
-                    <div class="flex items-center gap-4">
+                <div
+                    class="bg-brand-surface p-8 rounded-2xl border border-white/5 relative hover:border-brand-blue/30 transition-colors">
+                    <i class="fas fa-quote-left text-4xl text-brand-blue/10 absolute top-6 left-6"></i>
+                    <p class="text-brand-light relative z-10 italic mb-6 text-sm leading-relaxed">
+                        "O que mais me impressionou foi a clareza dos dados. Antes eu achava que marketing era sorte.
+                        Com a Markant, virou uma <strong>máquina previsível</strong>. Recomendo para quem quer jogar o
+                        jogo grande."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-white/5 pt-4">
                         <img src="image/delegado.jpg" alt="Delegado Amir"
-                            class="w-12 h-12 rounded-full object-cover border border-brand-blue">
+                            class="w-12 h-12 rounded-full object-cover border-2 border-brand-blue">
                         <div>
-                            <h5 class="font-bold text-white text-sm">Delegado Amir Salmen</h5>
-                            <p class="text-xs text-brand-gray">Figura Pública</p>
+                            <h5 class="font-bold text-white text-sm">Dr. Amir Salmen</h5>
+                            <p class="text-xs text-brand-gray">Figura Pública & Empresário</p>
                         </div>
                     </div>
                 </div>
@@ -364,46 +450,100 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <footer class="py-24 bg-gradient-to-br from-brand-blue to-brand-dark relative overflow-hidden text-center">
+    <!-- FAQ (Objection Handling) -->
+    <section id="faq" class="py-24 bg-brand-surface border-t border-white/5">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-heading font-bold text-center text-white mb-12">Perguntas Frequentes</h2>
+
+            <div class="space-y-4">
+                <div class="border border-white/10 rounded-lg bg-brand-dark overflow-hidden">
+                    <button
+                        class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-bold focus:outline-none"
+                        onclick="toggleFaq(this)">
+                        <span>Para quem é essa consultoria?</span>
+                        <i class="fas fa-chevron-down text-brand-accent transition-transform"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-brand-gray text-sm hidden">
+                        Para empresas que já faturam e querem escalar. Não atendemos quem está começando do zero
+                        absoluto, pois nossa metodologia funciona como um "multiplicador" do que já existe.
+                    </div>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-brand-dark overflow-hidden">
+                    <button
+                        class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-bold focus:outline-none"
+                        onclick="toggleFaq(this)">
+                        <span>Quanto tempo para ver resultados?</span>
+                        <i class="fas fa-chevron-down text-brand-accent transition-transform"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-brand-gray text-sm hidden">
+                        Nossos ciclos de otimização são de 30 dias. Geralmente, nas primeiras 2 semanas já identificamos
+                        os "vazamentos" de dinheiro e começamos a ver melhoria no ROI.
+                    </div>
+                </div>
+
+                <div class="border border-white/10 rounded-lg bg-brand-dark overflow-hidden">
+                    <button
+                        class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-bold focus:outline-none"
+                        onclick="toggleFaq(this)">
+                        <span>Vocês garantem resultados?</span>
+                        <i class="fas fa-chevron-down text-brand-accent transition-transform"></i>
+                    </button>
+                    <div class="px-6 pb-4 text-brand-gray text-sm hidden">
+                        Trabalhamos com dados, não promessas vazias. Se seguirmos o plano e não houver evolução nos KPIs
+                        principais em 90 dias, nós trabalhamos de graça até o resultado vir. Isso está em contrato.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA (Action) -->
+    <footer
+        class="py-24 bg-gradient-to-br from-brand-blue/20 to-brand-dark relative overflow-hidden text-center border-t border-white/10">
         <div
             class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-30">
         </div>
 
         <div class="container mx-auto px-6 relative z-10 max-w-3xl">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Pronto para Escalar?</h2>
-            <p class="text-xl text-blue-100 mb-10">Não deixe mais dinheiro na mesa. Agende sua consultoria estratégica
-                gratuita e receba um plano de ação claro.</p>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Chega de perder para a concorrência.
+            </h2>
+            <p class="text-xl text-blue-100/80 mb-10">Você está a um clique de transformar seu marketing em uma máquina
+                de lucro.</p>
 
-            <button
-                onclick="document.getElementById('name').focus(); document.getElementById('hero').scrollIntoView({behavior: 'smooth'});"
-                class="bg-white text-brand-blue hover:bg-gray-100 font-bold py-5 px-10 rounded-full shadow-2xl transition-all transform hover:-translate-y-1 text-lg uppercase tracking-wide">
+            <button onclick="focusForm()"
+                class="bg-white text-brand-dark hover:bg-brand-accent hover:text-brand-dark font-bold py-5 px-12 rounded-full shadow-2xl transition-all transform hover:-translate-y-1 text-lg uppercase tracking-wide border-4 border-transparent hover:border-white/20">
                 Quero Meu Diagnóstico Gratuito
             </button>
 
-            <p class="mt-6 text-sm text-blue-200/80">
-                <i class="fas fa-exclamation-triangle text-yellow-400 mr-2"></i>
-                Atenção: Limitamos a <strong>5 novas empresas por semana</strong>.
+            <p class="mt-8 text-sm text-brand-gray">
+                <i class="fas fa-clock text-brand-accent mr-2"></i>
+                Resposta em até 24h úteis. Vagas limitadas para Fevereiro.
             </p>
+        </div>
+
+        <div class="mt-20 text-xs text-brand-gray/30">
+            &copy; 2024 Markant Growth. Todos os direitos reservados.
         </div>
     </footer>
 
-    <!-- Modal -->
+    <!-- Modal Success -->
     <div id="lead-modal"
         class="fixed inset-0 z-[9999] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
         aria-hidden="true">
-        <div class="absolute inset-0 bg-brand-dark/90 backdrop-blur-sm"></div>
-        <div class="relative bg-brand-surface border border-white/10 p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 text-center transform scale-95 transition-transform duration-300"
+        <div class="absolute inset-0 bg-brand-dark/90 backdrop-blur-md"></div>
+        <div class="relative bg-brand-surface border border-brand-accent/30 p-8 rounded-2xl shadow-neon max-w-md w-full mx-4 text-center transform scale-95 transition-transform duration-300"
             id="modal-content">
-            <div class="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-check text-3xl text-brand-accent"></i>
+            <div
+                class="w-20 h-20 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                <i class="fas fa-check text-4xl text-brand-accent"></i>
             </div>
             <h3 class="text-2xl font-bold text-white mb-2">Solicitação Recebida!</h3>
-            <p class="text-brand-gray mb-8">Nossa equipe analisará seu perfil e entrará em contato em até 24 horas
-                úteis.</p>
+            <p class="text-brand-gray mb-8">Parabéns pela decisão. Nossa equipe de especialistas já recebeu seus dados e
+                entrará em contato em breve.</p>
             <button
-                class="modal-close w-full bg-brand-blue hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-colors">
-                Entendido
+                class="modal-close w-full bg-brand-blue hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-colors shadow-lg">
+                Voltar ao Site
             </button>
         </div>
     </div>
