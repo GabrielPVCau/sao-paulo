@@ -91,18 +91,11 @@
                 MARKANT
             </a>
 
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#problema" class="text-sm font-medium text-brand-muted hover:text-white transition-colors">
-                    Diagnóstico</a>
-                <a href="#metodo"
-                    class="text-sm font-medium text-brand-muted hover:text-white transition-colors">O Framework</a>
-                <a href="#resultados"
-                    class="text-sm font-medium text-brand-muted hover:text-white transition-colors">Cases</a>
-            </div>
+            <!-- LPO MODIFICATION: Navigation links removed to reduce attention leakage -->
 
             <a href="#aplicacao" onclick="focusForm()"
                 class="hidden md:inline-flex items-center gap-2 bg-white text-brand-bg px-5 py-2.5 rounded-lg text-sm font-bold transition-all hover:bg-gray-100 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                <span>Agendar Sessão Estratégica</span>
+                <span>Agendar Sessão Gratuita</span>
             </a>
         </div>
     </nav>
@@ -141,12 +134,13 @@
                     <h1
                         class="text-5xl md:text-6xl lg:text-7xl font-heading font-bold leading-[1.1] mb-6 text-white tracking-tight">
                         Crescimento B2B não é sorte. <br>
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400">É Engenharia de Receita.</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400">É
+                            Engenharia de Receita.</span>
                     </h1>
 
                     <p class="text-lg text-brand-muted mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                        Abandone o "achismo". Implemente um motor de crescimento validado por dados que transforma leads frios em receita recorrente. Para empresas que exigem ROI mensurável, não métricas de vaidade.
+                        Abandone o "achismo". Implemente um motor de crescimento validado por dados que transforma leads
+                        frios em receita recorrente. Para empresas que exigem ROI mensurável, não métricas de vaidade.
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -160,7 +154,7 @@
                         </a>
                     </div>
 
-                        <div class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-brand-muted">
+                    <div class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-brand-muted">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-check-circle text-brand-accent"></i>
                             <span>Decisões baseadas em dados</span>
@@ -186,7 +180,8 @@
                         class="relative bg-brand-surface border border-brand-border p-8 rounded-2xl shadow-2xl backdrop-blur-xl">
                         <div class="mb-8">
                             <h3 class="text-xl font-heading font-bold text-white">Sessão de Diagnóstico (Gratuita)</h3>
-                            <p class="text-sm text-brand-muted mt-2">Receba um plano de ação tático para identificar gargalos invisíveis que estão drenando sua margem de lucro hoje.</p>
+                            <p class="text-sm text-brand-muted mt-2">Receba um plano de ação tático para identificar
+                                gargalos invisíveis que estão drenando sua margem de lucro hoje.</p>
                         </div>
 
                         <form id="leadForm" class="space-y-5">
@@ -206,23 +201,11 @@
                                     class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-3.5 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all placeholder-gray-700 text-sm">
                             </div>
 
-                            <div class="space-y-1.5">
-                                <label for="revenue"
-                                    class="text-xs font-semibold text-brand-muted uppercase tracking-wide ml-1">Faturamento
-                                    Mensal Atual</label>
-                                <select id="revenue" name="revenue"
-                                    class="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-3.5 text-white focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-all text-sm appearance-none cursor-pointer">
-                                    <option value="" disabled selected>Selecione uma opção...</option>
-                                    <option value="<50k">Até R$ 50k/mês (Early Stage)</option>
-                                    <option value="50k-100k">R$ 50k - R$ 100k/mês (Tração)</option>
-                                    <option value="100k-500k">R$ 100k - R$ 500k/mês (Escala)</option>
-                                    <option value="500k+">Acima de R$ 500k/mês (Expansão)</option>
-                                </select>
-                            </div>
+                            <!-- LPO MODIFICATION: Revenue field removed to reduce friction -->
 
                             <button type="submit"
                                 class="w-full bg-white text-brand-bg font-bold py-4 rounded-lg hover:bg-gray-100 transition-all transform hover:-translate-y-0.5 text-sm uppercase tracking-wide mt-4 flex items-center justify-center gap-2 group-hover:shadow-lg">
-                                <span>Verificar Elegibilidade</span>
+                                <span>Receber Diagnóstico de Growth</span>
                                 <i class="fas fa-arrow-right text-xs"></i>
                             </button>
                         </form>
@@ -269,9 +252,11 @@
     <section id="problema" class="py-24 relative">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Por que sua empresa parou de crescer?</h2>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">Por que sua empresa parou de
+                    crescer?</h2>
                 <p class="text-brand-muted text-lg leading-relaxed">
-                    O "Growth" real não é um hack mágico. Se você enfrenta estes cenários, sua operação está queimando caixa e cedendo market share para concorrentes mais ágeis.
+                    O "Growth" real não é um hack mágico. Se você enfrenta estes cenários, sua operação está queimando
+                    caixa e cedendo market share para concorrentes mais ágeis.
                 </p>
             </div>
 
@@ -284,8 +269,9 @@
                         <i class="fas fa-chart-area text-red-500 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">Decisões Baseadas em "Achismo"</h3>
-                    <p class="text-brand-muted leading-relaxed text-sm">
-                        Você aposta o orçamento em "balas de prata" ou na intuição. Sem testes A/B rigorosos, você nunca descobre o que funciona e fica refém da sorte (e do algoritmo).
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Você aposta o orçamento em "balas de prata" ou na intuição. Sem testes A/B rigorosos, você nunca
+                        descobre o que funciona e fica refém da sorte (e do algoritmo).
                     </p>
                 </div>
 
@@ -297,8 +283,9 @@
                         <i class="fas fa-funnel-dollar text-brand-primary text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">Vendas e Marketing em Guerra</h3>
-                    <p class="text-brand-muted leading-relaxed text-sm">
-                        Leads chegam, mas vendas reclama da qualidade. O funil está quebrado. Sem alinhar a aquisição com o LTV, você paga caro por clientes que não dão lucro.
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Leads chegam, mas vendas reclama da qualidade. O funil está quebrado. Sem alinhar a aquisição
+                        com o LTV, você paga caro por clientes que não dão lucro.
                     </p>
                 </div>
 
@@ -310,8 +297,9 @@
                         <i class="fas fa-compass text-purple-500 text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-4">Voando às Cegas</h3>
-                    <p class="text-brand-muted leading-relaxed text-sm">
-                        Você olha para métricas de vaidade (Likes, CPC) em vez de métricas de negócio (CAC, LTV, Margem). Sem dados limpos, escalar a verba é suicídio financeiro.
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Você olha para métricas de vaidade (Likes, CPC) em vez de métricas de negócio (CAC, LTV,
+                        Margem). Sem dados limpos, escalar a verba é suicídio financeiro.
                     </p>
                 </div>
             </div>
@@ -330,7 +318,8 @@
                     <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-8">Growth System Framework™
                     </h2>
                     <p class="text-brand-muted text-lg mb-10">
-                        Growth não é um departamento, é uma metodologia. Implementamos uma infraestrutura de experimentação contínua que valida canais, otimiza conversão e blinda sua receita.
+                        Growth não é um departamento, é uma metodologia. Implementamos uma infraestrutura de
+                        experimentação contínua que valida canais, otimiza conversão e blinda sua receita.
                     </p>
 
                     <div class="space-y-6">
@@ -342,7 +331,8 @@
                             <div>
                                 <h4 class="text-white font-bold text-lg mb-2">1. Diagnóstico & Rastreamento</h4>
                                 <p class="text-brand-muted text-sm leading-relaxed">
-                                    Sem dados, você é apenas mais uma pessoa com opinião. Auditamos e configuramos seu Analytics para saber exatamente onde investir cada centavo com retorno garantido.
+                                    Sem dados, você é apenas mais uma pessoa com opinião. Auditamos e configuramos seu
+                                    Analytics para saber exatamente onde investir cada centavo com retorno garantido.
                                 </p>
                             </div>
                         </div>
@@ -354,7 +344,8 @@
                             <div>
                                 <h4 class="text-white font-bold text-lg mb-2">2. Experimentação Acelerada</h4>
                                 <p class="text-brand-muted text-sm leading-relaxed">
-                                    A velocidade do aprendizado define o líder de mercado. Rodamos baterias de testes A/B semanais em ofertas e criativos para encontrar o "Product-Channel Fit" ideal.
+                                    A velocidade do aprendizado define o líder de mercado. Rodamos baterias de testes
+                                    A/B semanais em ofertas e criativos para encontrar "O Canal de Vendas Ideal".
                                 </p>
                             </div>
                         </div>
@@ -364,9 +355,10 @@
                                 class="flex-shrink-0 w-12 h-12 rounded-full bg-brand-bg border border-brand-border text-white flex items-center justify-center font-heading font-bold text-lg group-hover:border-brand-primary group-hover:text-brand-primary transition-colors">
                                 03</div>
                             <div>
-                                <h4 class="text-white font-bold text-lg mb-2">3. Otimização Full-Funnel</h4>
+                                <h4 class="text-white font-bold text-lg mb-2">3. Aumento de Lucro Real</h4>
                                 <p class="text-brand-muted text-sm leading-relaxed">
-                                    Aquisição é só o começo. Trabalhamos a ativação, retenção e upsell para transformar leads caros em clientes recorrentes e promotores da marca.
+                                    Aquisição é só o começo. Trabalhamos a ativação, retenção e upsell para transformar
+                                    leads caros em clientes recorrentes e promotores da marca.
                                 </p>
                             </div>
                         </div>
@@ -439,7 +431,8 @@
     <!-- Testimonials (Social Proof) -->
     <section id="resultados" class="py-24 bg-brand-bg">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-white mb-16">O impacto de uma operação baseada em dados.</h2>
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-white mb-16">O impacto de uma
+                operação baseada em dados.</h2>
 
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <!-- Testimonial 1 -->
@@ -455,7 +448,9 @@
                         </div>
                     </div>
                     <p class="text-brand-muted text-sm leading-relaxed italic">
-                        "Paramos de brigar por preço. A Markant nos ajudou a posicionar a oferta de forma que o cliente percebe o valor antes mesmo do preço. O ROI dobrou porque a conversão aumentou, não porque gastamos mais."
+                        "Paramos de brigar por preço. A Markant nos ajudou a posicionar a oferta de forma que o cliente
+                        percebe o valor antes mesmo do preço. O ROI dobrou porque a conversão aumentou, não porque
+                        gastamos mais."
                     </p>
                 </div>
 
@@ -472,7 +467,8 @@
                         </div>
                     </div>
                     <p class="text-brand-muted text-sm leading-relaxed italic">
-                        "Eu tinha medo de escalar e perder o controle da qualidade. A consultoria implementou processos que permitiram triplicar o volume mantendo a satisfação do cliente intacta."
+                        "Eu tinha medo de escalar e perder o controle da qualidade. A consultoria implementou processos
+                        que permitiram triplicar o volume mantendo a satisfação do cliente intacta."
                     </p>
                 </div>
             </div>
@@ -493,8 +489,10 @@
                         <i class="fas fa-chevron-down text-brand-muted transition-transform text-sm"></i>
                     </button>
                     <div
-                        class="px-6 pb-5 text-brand-muted text-sm hidden leading-relaxed border-t border-brand-border/50 pt-4">
-                        O Growth System é desenhado para empresas que já validaram seu produto (Product-Market Fit) e faturam acima de R$ 50k/mês. Se você busca tração inicial, este não é o momento. Se busca escala e eficiência, é para você.
+                        class="px-6 pb-5 text-gray-400 text-sm hidden leading-relaxed border-t border-brand-border/50 pt-4">
+                        O Growth System é desenhado para empresas que já validaram seu produto (Product-Market Fit) e
+                        faturam acima de R$ 50k/mês. Se você busca tração inicial, este não é o momento. Se busca escala
+                        e eficiência, é para você.
                     </div>
                 </div>
 
@@ -506,8 +504,10 @@
                         <i class="fas fa-chevron-down text-brand-muted transition-transform text-sm"></i>
                     </button>
                     <div
-                        class="px-6 pb-5 text-brand-muted text-sm hidden leading-relaxed border-t border-brand-border/50 pt-4">
-                        O risco é zero. Trabalhamos com contratos baseados em sucesso (Success Fee) para a parte variável. Se não atingirmos os KPIs estipulados em contrato, nós não ganhamos o bônus. Nosso incentivo é o seu lucro.
+                        class="px-6 pb-5 text-gray-400 text-sm hidden leading-relaxed border-t border-brand-border/50 pt-4">
+                        O risco é zero. Trabalhamos com contratos baseados em sucesso (Success Fee) para a parte
+                        variável. Se não atingirmos os KPIs estipulados em contrato, nós não ganhamos o bônus. Nosso
+                        incentivo é o seu lucro.
                     </div>
                 </div>
 
@@ -519,8 +519,10 @@
                         <i class="fas fa-chevron-down text-brand-muted transition-transform text-sm"></i>
                     </button>
                     <div
-                        class="px-6 pb-5 text-brand-muted text-sm hidden leading-relaxed border-t border-brand-border/50 pt-4">
-                        O modelo é híbrido: um Setup Fee (para cobrir custos de tecnologia e equipe dedicada) + Variável sobre o crescimento gerado. O valor exato depende da complexidade do seu funil, mas o ROI projetado é positivo já nos primeiros 90 dias.
+                        class="px-6 pb-5 text-gray-400 text-sm hidden leading-relaxed border-t border-brand-border/50 pt-4">
+                        O modelo é híbrido: um Setup Fee (para cobrir custos de tecnologia e equipe dedicada) + Variável
+                        sobre o crescimento gerado. O valor exato depende da complexidade do seu funil, mas o ROI
+                        projetado é positivo já nos primeiros 90 dias.
                     </div>
                 </div>
             </div>
@@ -535,9 +537,11 @@
         </div>
 
         <div class="container mx-auto px-6 relative z-10 max-w-4xl">
-            <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Pare de fazer Marketing. Comece a fazer Growth.</h2>
+            <h2 class="text-4xl md:text-5xl font-heading font-bold text-white mb-6">Pare de fazer Marketing. Comece a
+                fazer Growth.</h2>
             <p class="text-xl text-brand-muted mb-12 max-w-2xl mx-auto">
-                A diferença entre empresas que estagnam e as que dominam o mercado é a velocidade de experimentação. Agende sua sessão e descubra onde está o dinheiro na mesa.
+                A diferença entre empresas que estagnam e as que dominam o mercado é a velocidade de experimentação.
+                Agende sua sessão e descubra onde está o dinheiro na mesa.
             </p>
 
             <button onclick="focusForm()"
@@ -575,7 +579,96 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // LPO MODIFICATION: Inline script to replace missing script.js and implement A/B test logic
+        const leadForm = document.getElementById('leadForm');
+        const modal = document.getElementById('lead-modal');
+        const modalClose = document.querySelectorAll('.modal-close');
+
+        function focusForm() {
+            const nameInput = document.getElementById('name');
+            if (nameInput) {
+                nameInput.focus();
+                nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Mock function for sending data (Simulating sendLeadToServices)
+        function sendLeadToServices(data) {
+            console.log('Sending lead data:', data);
+            // Simulate API call
+            return new Promise(resolve => setTimeout(resolve, 1000));
+        }
+
+        if (leadForm) {
+            leadForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(leadForm);
+                const leadData = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    // LPO MODIFICATION: Revenue field removed from validation/object
+                    timestamp: new Date().toISOString()
+                };
+
+                const btn = leadForm.querySelector('button[type="submit"]');
+                const originalContent = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+                try {
+                    await sendLeadToServices(leadData);
+
+                    // Show Modal
+                    if (modal) {
+                        modal.classList.remove('opacity-0', 'pointer-events-none');
+                        const content = modal.querySelector('#modal-content');
+                        if (content) {
+                            content.classList.remove('scale-95');
+                            content.classList.add('scale-100');
+                        }
+                    }
+
+                    leadForm.reset();
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Erro ao enviar. Tente novamente.');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = originalContent;
+                }
+            });
+        }
+
+        // Modal Close Logic
+        modalClose.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (modal) {
+                    modal.classList.add('opacity-0', 'pointer-events-none');
+                    const content = modal.querySelector('#modal-content');
+                    if (content) {
+                        content.classList.add('scale-95');
+                        content.classList.remove('scale-100');
+                    }
+                }
+            });
+        });
+
+        // FAQ Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
 </body>
 
 </html>
